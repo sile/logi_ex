@@ -31,5 +31,10 @@ end
 # マクロを有効にする
 require Logi
 
+# sink(出力先)の登録
+sink = Logi.BuiltIn.Sink.IoDevice.new :foo
+Logi.Channel.install_sink sink, info
+
+# ログ出力
 Logi.info "hello ~p", [:world]
 ```

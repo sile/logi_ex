@@ -1,12 +1,16 @@
 defmodule Logi do
   defmacro current_location do
-    {{:., [], [:logi_location, :unsafe_new]}, [],
-     [(quote do: self), Application.get_application(__CALLER__.module), __CALLER__.module,
-      case __CALLER__.function do
-        {f, _} -> f
-        _ -> nil
-      end,
-      __CALLER__.line]}
+    quote do
+      :logi_location.unsafe_new(
+        self,
+        unquote(Application.get_application(__CALLER__.module)),
+        unquote(__CALLER__.module),
+        unquote(case __CALLER__.function do
+          {f, _} -> f
+          _ -> nil
+        end),
+        unquote(__CALLER__.line))
+    end
   end
 
   defmacro log(severity, format, data \\ [], options \\ []) do
@@ -48,5 +52,37 @@ defmodule Logi do
 
   defmacro emergency(format, data \\ [], options \\ []) do
     quote do: Logi.log :emergency, unquote(format), unquote(data), unquote(options)
+  end
+
+  def set_headers(headers, options \\ []) do
+    :logi.set_headers headers, options
+  end
+end
+
+defmodule Logi.Channel do
+  def default_channel do
+    :logi_channel.default_channel
+  end
+
+  def which_channels do
+    :logi_channel.which_channels
+  end
+
+  def which_sinks(channel \\ LogiChannel.default_channel) do
+    :logi_channel.which_sinks channel
+  end
+
+  def install_sink(sink, condition) do
+    :logi_channel.install_sink sink, condition
+  end
+
+  def install_sink(channel, sink, condition) do
+    :logi_channel.install_sink channel, sink, condition
+  end
+end
+
+defmodule Logi.BuiltIn.Sink.IoDevice do
+  def new(id, options \\ []) do
+    :logi_builtin_sink_io_device.new id, options
   end
 end
