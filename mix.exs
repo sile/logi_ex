@@ -27,6 +27,10 @@ defmodule Logi.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:logi, "~> 0.5"}]
+    [
+      {:logi, "~> 0.5"},
+      {:earmark, "~> 1.0", only: :dev},
+      {:ex_doc, "~> 0.14", only: :dev}
+    ]
   end
 end
