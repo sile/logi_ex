@@ -1,22 +1,25 @@
 logi_ex
 =======
 
+[![hex.pm version](https://img.shields.io/hexpm/v/logi_ex.svg)](https://hex.pm/packages/logi_ex)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-[logi](https://github.com/sile/logi)のElixirラッパー
+This is a wrapper library of [logi](https://github.com/sile/logi).
 
-インストール
+`logi` is a logger interface library for Erlang/OTP.
+
+Installation
 ------------
 
-`mix.exs`に以下を追加:
+Add following lines to your `mix.exs`:
 
 ```elixir
 def deps do
-  [{:logi_ex, git: "https://github.com/sile/logi_ex.git"}]
+  [{:logi_ex, "~> 0.5"}]
 end
 ```
 
-アプリケーションファイルに以下を追加:
+Next, add this to your application file:
 
 ``` elixir
 def application do
@@ -24,17 +27,17 @@ def application do
 end
 ```
 
-使用例
-------
+Usage Examples
+--------------
 
 ``` elixir
-# マクロを有効にする
-require Logi
+# Enables macros
+iex> require Logi
 
-# sink(出力先)の登録
-sink = Logi.BuiltIn.Sink.IoDevice.new :foo
-Logi.Channel.install_sink sink, info
+# Installs a sink
+iex> sink = Logi.BuiltIn.Sink.IoDevice.new :foo
+iex> Logi.Channel.install_sink sink, :info
 
-# ログ出力
-Logi.info "hello ~p", [:world]
+# Outputs a log message
+iex> Logi.info "hello ~p", [:world]
 ```
