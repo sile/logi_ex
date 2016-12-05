@@ -3,8 +3,14 @@ defmodule Logi.Mixfile do
 
   def project do
     [app: :logi_ex,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.2",
+     description: "A logger interface library",
+     package: [
+       maintainers: ["Takeru Ohta"],
+       licenses: ["MIT"],
+       links: %{"GitHub" => "https://github.com/sile/logi_ex"}
+     ],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
