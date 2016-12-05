@@ -39,14 +39,14 @@ defmodule Logi.SinkWriter do
   end
 
   @doc "Returns `true` if `x` is a `t:writer/0` instance, otherwise `false`."
-  @spec is_writer(any) :: boolean
-  def is_writer(x) do
+  @spec writer?(any) :: boolean
+  def writer?(x) do
     :logi_sink_writer.is_writer x
   end
 
   @doc "Returns `true` if `x` is a module which implements this behaviour, otherwise `false`."
-  @spec is_callback_module(any) :: boolean
-  def is_callback_module(x) do
+  @spec callback_module?(any) :: boolean
+  def callback_module?(x) do
     :logi_sink_writer.is_callback_module x
   end
 

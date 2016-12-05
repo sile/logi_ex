@@ -23,7 +23,6 @@ defmodule Logi.BuiltIn.Layout.Default do
   iex> {:ok, _} = Logi.Channel.install_sink(Logi.BuiltIn.Sink.IoDevice.new(:foo, [layout: layout]), :info)
   iex> Logi.info "hello world"
   #OUTPUT# 2016-12-05 03:13:12.981 [info] nonode@nohost <0.150.0> nil:nil:132 [] hello world
-  :ok
   ```
   """
   @behaviour Logi.Layout

@@ -53,8 +53,8 @@ defmodule Logi.Sink do
   end
 
   @doc "Returns `true` if `x` is a `t:sink/0` value, `false` otherwise."
-  @spec is_sink(any) :: boolean
-  def is_sink(x) do
+  @spec sink?(any) :: boolean
+  def sink?(x) do
     :logi_sink.is_sink x
   end
 

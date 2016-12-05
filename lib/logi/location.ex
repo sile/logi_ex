@@ -31,8 +31,8 @@ defmodule Logi.Location do
   end
 
   @doc "Returns `true` if `x` is a `t:location/0` value, `false` otherwise."
-  @spec is_location(any) :: boolean
-  def is_location(x) do
+  @spec location?(any) :: boolean
+  def location?(x) do
     :logi_location.is_location x
   end
 

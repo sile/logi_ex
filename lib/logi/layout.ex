@@ -15,7 +15,6 @@ defmodule Logi.Layout do
   iex> {:ok, _} = Logi.Channel.install_sink(Logi.BuiltIn.Sink.IoDevice.new(:foo, [layout: layout]), :info)
   iex> Logi.info "hello world"
   #OUTPUT# EXAMPLE: hello world
-  :ok
   ```
   """
 
@@ -52,8 +51,8 @@ defmodule Logi.Layout do
   end
 
   @doc "Returns `true` if `x` is a `t:layout/0`, `false` otherwise."
-  @spec is_layout(any) :: boolean
-  def is_layout(x) do
+  @spec layout?(any) :: boolean
+  def layout?(x) do
     :logi_layout.is_layout x
   end
 

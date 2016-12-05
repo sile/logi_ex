@@ -22,7 +22,6 @@ defmodule Logi.BuiltIn.Sink.IoDevice do
   iex> {:ok, _} = Logi.Channel.install_sink Logi.BuiltIn.Sink.IoDevice.new(:foo), :info
   iex> Logi.info "hello world"
   #OUTPUT# 2016-12-05 09:55:25.213 [info] nonode@nohost <0.142.0> nil:nil:28 [] hello world
-  :ok
   ```
 
   Outputs to a file:
@@ -44,7 +43,6 @@ defmodule Logi.BuiltIn.Sink.IoDevice do
   iex> {:ok, _} = Logi.Channel.install_sink sink, :info
   iex> Logi.info "hello world"
   #OUTPUT# [may_layout] hello world
-  :ok
   ```
   """
   @behaviour Logi.SinkWriter

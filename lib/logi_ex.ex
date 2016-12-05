@@ -20,7 +20,6 @@ defmodule Logi do
 
   iex> Logi.info "hello world"
   #OUTPUT# 2016-12-04 20:04:44.308 [info] nonode@nohost <0.150.0> nil:nil:3 [] hello world
-  :ok
   ```
   """
 
@@ -178,8 +177,8 @@ defmodule Logi do
   @doc """
   Returns `true` if `x` is a severity, otherwise `false`.
   """
-  @spec is_severity(any) :: boolean
-  def is_severity(x) do
+  @spec severity?(any) :: boolean
+  def severity?(x) do
     :logi.is_severity x
   end
 
@@ -194,8 +193,8 @@ defmodule Logi do
   @doc """
   Returns `true` if `x` is a logger, otherwise `false`.
   """
-  @spec is_logger(any) :: boolean
-  def is_logger(x) do
+  @spec logger?(any) :: boolean
+  def logger?(x) do
     :logi.is_logger x
   end
 
@@ -524,7 +523,6 @@ defmodule Logi do
   iex> Logi.log :debug, "hello world", [], []  # There are no applicable sinks (the severity is too low)
   iex> Logi.log :info, "hello world", [], []   # The log message is consumed by the above sink
   #OUTPUT# 2016-12-04 23:04:17.028 [info] nonode@nohost <0.150.0> nil:nil:19 [] hello world
-  :ok
   ```
 
   If the logger has nested loggers, the function is applied to them recursively.
@@ -535,7 +533,6 @@ defmodule Logi do
   iex> Logi.log :info, "hello world", [], [logger: logger]
   #OUTPUT# 2016-12-04 23:08:51.778 [info] nonode@nohost <0.150.0> nil:nil:24 [id=foo] hello world
   #OUTPUT# 2016-12-04 23:08:51.778 [info] nonode@nohost <0.150.0> nil:nil:24 [id=bar] hello world
-  :ok
   ```
   """
   @spec log(severity, :io.format, [any], log_options) :: logger_instance
@@ -544,7 +541,9 @@ defmodule Logi do
       require Logi.Location
       case :logi._ready(unquote(severity), Logi.Location.current_location, unquote(options)) do
         {logger, []} -> logger
-        {logger, sinks} -> :logi._write(sinks, unquote(format), unquote(data))
+        {logger, sinks} ->
+          :logi._write(sinks, unquote(format), unquote(data))
+          logger
       end
     end
   end

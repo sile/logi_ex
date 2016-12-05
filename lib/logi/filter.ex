@@ -68,8 +68,8 @@ defmodule Logi.Filter do
   @doc """
   Returns `true` if `x` is a `t:filter/0` value, `false` otherwise.
   """
-  @spec is_filter(any) :: boolean
-  def is_filter(x) do
+  @spec filter?(any) :: boolean
+  def filter?(x) do
     :logi_filter.is_filter x
   end
 

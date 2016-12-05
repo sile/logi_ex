@@ -84,8 +84,8 @@ defmodule Logi.Condition do
   ]
 
   @doc "Returns `true` if `x` is a valid `t:condition/0` value, otherwise `false`."
-  @spec is_condition(any) :: boolean
-  def is_condition(x) do
+  @spec condition?(any) :: boolean
+  def condition?(x) do
     :logi_condition.is_condition x
   end
 

@@ -5,8 +5,8 @@ defmodule Logi.Context do
   @opaque context :: :logi_context.context
 
   @doc "Returns `true` if `x` is a `t:context/0` value, `false` otherwise."
-  @spec is_context(any) :: boolean
-  def is_context(context) do
+  @spec context?(any) :: boolean
+  def context?(context) do
     :logi_context.is_context context
   end
 

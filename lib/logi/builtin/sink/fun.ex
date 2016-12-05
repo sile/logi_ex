@@ -26,7 +26,6 @@ defmodule Logi.BuiltIn.Sink.Fun do
   iex> require Logi
   iex> Logi.info "hello world"
   #OUTPUT# [CONSUMED] hello world
-  :ok
   ```
   """
   @behaviour Logi.SinkWriter
