@@ -3,7 +3,7 @@ defmodule Logi.Mixfile do
 
   def project do
     [app: :logi_ex,
-     version: "0.1.0",
+     version: "0.1.1",
      elixir: "~> 1.2",
      description: "A logger interface library",
      package: [
