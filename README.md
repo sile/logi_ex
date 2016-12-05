@@ -8,6 +8,8 @@ This is a wrapper library of [logi](https://github.com/sile/logi).
 
 `logi` is a logger interface library for Erlang/OTP.
 
+[Documentation](https://hexdocs.pm/logi_ex/api-reference.html)
+
 Installation
 ------------
 
